@@ -3,7 +3,46 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>FBI's Most Wanted</title>
+  <title>Faux Fugitive</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="index.js"></script>
+  <!-- <script defer src="index.js"></script> -->
 </head>
+<body>
+    <header>
+      <h1>Welcome to Faux Fugitive: a place where anyone can be on FBI's Most Wanted</h1>
+    </header>
+  
+    
+    <div id="real-fugitives">
+    
+    </div>
+  
+  
+    <div id="fugitve-details">
+      <img class="detail-image" src="#" alt="FBI most wanted" />
+      <h2 class="name">Name:</h2>
+      <h3 class="crime">Crime:</h3>
+      <h4 class="reward">Reward:</h3>
+    </div>
+  
+    
+  
+  
+    <form id="new_fugitive">
+      <h5>Create your own fugitive!!</h5>
+      <label for="new-name">Name: </label>
+      <input type="text" name="name" id="new-name" />
+      <label for="new-crime">Crime: </label>
+      <input type="text" name="crime" id="new-crime" />
+      <label for="new-image">Image: </label>
+      <input type="text" name="image" id="new-image" />
+      <label for="new-rating">Reward: </label>
+      <input type="number" name="rating" id="new-reward" />
+      <label for="new-comment">Comment: </label>
+      <textarea name="new-comment" name="new-comment" id="new-comment"></textarea>
+      <input type="submit" id='submit-button' value="Create" />
+    </form>
+    <script defer src="index.js"></script>
+  </body>
+  
+  </html>
