@@ -1,10 +1,11 @@
-const fetchUrl = ("https://api.fbi.gov/wanted/v1/list")
+const fetchUrl = "https://api.fbi.gov/wanted/v1/list";
 
 
 fetch(fetchUrl)
-.then((response) => response.json())
-.then((wanteds) => {
+  .then((response) => response.json())
+  .then((wanteds) => {
     for (let wanted of wanteds.items) {
+
         let fugitiveName = wanted.title
         let fugitiveImage = wanted.images[0].thumb
         if (!wanted.subjects.includes("ViCAP Missing Persons")) {
@@ -34,18 +35,27 @@ fetch(fetchUrl)
         //     })
         }
 
+
     }
-})
+  });
 
 function handleClick(wanted) {
-   let nameClass = document.querySelector(".name")
-//    let crimeClass = document.querySelector(".crime")
-//    let rewardClass = document.querySelector(".reward")
-   let imageClass = document.querySelector(".detail-image")
-   nameClass.textContent= wanted.title
-   imageClass.src = wanted.images[0].original
-   
-} 
+  let nameClass = document.querySelector(".name");
+  //    let crimeClass = document.querySelector(".crime")
+  //    let rewardClass = document.querySelector(".reward")
+  let imageClass = document.querySelector(".detail-image");
+  nameClass.textContent = wanted.title;
+  imageClass.src = wanted.images[0].original;
+}
+
+// select the form element
+let submitFormButton = document.querySelector("#submit-button");
+// listen for the submit event on the form
+submitFromButtom.addEventListener("submit", () => {
+  event.preventDefault(); //
+  alert("Faux Fugitive Added to Database ");
+});
+
 // function fetchFugitive() {
 //     return fetch("https://api.fbi.gov/wanted/v1/list")
 // .then((response) => response.json())

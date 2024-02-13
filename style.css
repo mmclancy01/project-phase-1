@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light gray */
+    color: #333; /* Dark gray */
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, h5 {
+    background-color: #fff; /* White */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc; /* Light gray border */
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  #real-fugitives {
+    padding: 20px;
+  }
+  
+  #fugitve-details {
+    background-color: #fff; /* White */
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Light gray border */
+    text-align: center;
+  }
+  
+  .detail-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+  }
+  
+  .name, .crime, .reward {
+    margin: 5px 0;
+  }
+  
+  form {
+    background-color: #fff; /* White */
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Light gray border */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #555; /* Slightly darker gray on hover */
+  }
