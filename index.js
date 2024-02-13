@@ -45,17 +45,17 @@ function handleClick(wanted) {
   let rewardClass = document.querySelector(".reward")
   let imageClass = document.querySelector(".detail-image");
   let linkClass = document.querySelector(".url")
-  rewardClass.textContent = wanted.reward_text;
+  rewardClass.textContent = "Reward: " + wanted.reward_text;
   if (wanted.reward_text === null ){
     rewardClass.textContent = "No Reward at this time. Check back soon for updates"
   }
-  linkClass.textContent = wanted.url
+  linkClass.textContent = "Link to official FBI website: " + wanted.url
   linkClass.addEventListener('click', function linkToFbi() {
     window.location.href = wanted.url
   })
  
-  crimeClass.textContent = wanted.description
-  nameClass.textContent = wanted.title;
+  crimeClass.textContent = "Crime(s): " + wanted.description
+  nameClass.textContent = "Name: " + wanted.title;
   imageClass.src = wanted.images[0].original;
 }
 
