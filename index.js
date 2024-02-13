@@ -44,7 +44,22 @@ function handleFormSubmission(event) {
   });
 
   console.log(jsonFormData);
-
+  let imageContainer = document.querySelector("#real-fugitives");
+  let imgElement = document.createElement("img");
+  let newImage = event.target["image"].value;
+  let h2 = document.querySelector(".name");
+  let h3 = document.querySelector(".crime");
+  let h4 = document.querySelector(".reward");
+  imgElement.src = newImage;
+  imageContainer.append(imgElement);
+  imgElement.addEventListener("click", () => {
+    h2.textContent = event.target["name"].value;
+    h3.textContent = event.target["crime"].value;
+    h4.textContent = event.target["reward"].value;
+    // rating.textContent = newRating;
+    // comment.textContent = newComment;
+  });
+  // need to style images so they output in a thumbnail size to match others (need px max width/height)
   // Can we POST here???
 }
 
@@ -61,15 +76,6 @@ function handleClick(wanted) {
   nameClass.textContent = wanted.title;
   imageClass.src = wanted.images[0].original;
 }
-
-// function handleClick(wanted) {
-//   let nameClass = document.querySelector(".name");
-//   //    let crimeClass = document.querySelector(".crime")
-//   //    let rewardClass = document.querySelector(".reward")
-//   let imageClass = document.querySelector(".detail-image");
-//   nameClass.textContent = wanted.title;
-//   imageClass.src = wanted.images[0].original;
-// }
 
 // const addFugitiveListener = () => {
 //   let fugitiveImgNav = document.querySelector("#real-fugitives");
@@ -100,26 +106,9 @@ function handleClick(wanted) {
 //   let
 // }
 
-// select the form element
 // let submitFormButton = document.querySelector("#submit-button");
 // // listen for the submit event on the form
 // submitFromButtom.addEventListener("submit", () => {
 //   event.preventDefault(); //
 //   alert("Faux Fugitive Added to Database ");
 // });
-
-// function fetchFugitive() {
-//     return fetch("https://api.fbi.gov/wanted/v1/list")
-// .then((response) => response.json())
-// .then((wanteds) => {
-//    return wanteds
-//     })
-// }
-// const displayFugitive = () => {
-//     fetchFugitive().then((items) => {
-//         console.log(items)
-//     }
-//     )
-// }
-
-// write a function that removes the missing people from the list
