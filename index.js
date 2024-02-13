@@ -1,21 +1,38 @@
 const fetchUrl = ("https://api.fbi.gov/wanted/v1/list")
 
+
 fetch(fetchUrl)
 .then((response) => response.json())
 .then((wanteds) => {
     for (let wanted of wanteds.items) {
         let fugitiveName = wanted.title
         let fugitiveImage = wanted.images[0].thumb
-        console.log(fugitiveName)
-        console.log(fugitiveImage)
-        let imageContainer = document.querySelector("#real-fugitives")
-        let imgElement = document.createElement('img')
-        imgElement.src = fugitiveImage
-        imageContainer.append(imgElement)
+        if (!wanted.subjects.includes("ViCAP Missing Persons")) {
+        
+            console.log(fugitiveName)
+            console.log(fugitiveImage)
+            let imageContainer = document.querySelector("#real-fugitives")
+            let imgElement = document.createElement('img')
+            imgElement.src = fugitiveImage
+            imageContainer.append(imgElement)
         // fugitiveImage.splice()
-        imgElement.addEventListener('click', () => {
+            imgElement.addEventListener('click', () => {
             handleClick(wanted)
-        })
+            
+            })
+        } else {
+            console.log(fugitiveName)
+            console.log(fugitiveImage)
+            let imageContainerTwo = document.querySelector("#real-missing")
+            let imgElement = document.createElement('img')
+            imgElement.src = fugitiveImage
+            imageContainerTwo.append(imgElement)
+        // fugitiveImage.splice()
+            
+        //   imgElement.addEventListener('click', () => {
+        //     handleClick(wanted)  
+        //     })
+        }
 
     }
 })
