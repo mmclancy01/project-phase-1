@@ -8,6 +8,32 @@ function displayFugitives() {
         let fugitiveName = wanted.title;
         let fugitiveImage = wanted.images[0].thumb;
         if (!wanted.subjects.includes("ViCAP Missing Persons")) {
+
+        
+            console.log(fugitiveName)
+            console.log(fugitiveImage)
+            let imageContainer = document.querySelector("#real-fugitives")
+            let imgElement = document.createElement('img')
+            imgElement.src = fugitiveImage
+            imageContainer.append(imgElement)
+        
+            imgElement.addEventListener('click', () => {
+            handleClick(wanted)
+            
+            })
+        } else {
+            console.log(fugitiveName)
+            console.log(fugitiveImage)
+            let imageContainerTwo = document.querySelector("#real-missing")
+            let imgElement = document.createElement('img')
+            imgElement.src = fugitiveImage
+            imageContainerTwo.append(imgElement)
+        // fugitiveImage.splice()
+            
+          imgElement.addEventListener('click', () => {
+            handleClickTwo(wanted)  
+            })
+
           // console.log(fugitiveName);
           // console.log(fugitiveImage);
           let imageContainer = document.querySelector("#real-fugitives");
@@ -30,6 +56,7 @@ function displayFugitives() {
           //   imgElement.addEventListener('click', () => {
           //     handleClick(wanted)
           //     })
+
         }
       }
     });
@@ -72,8 +99,23 @@ submitForm.addEventListener("submit", handleFormSubmission);
 // Function to handle click event on images
 function handleClick(wanted) {
   let nameClass = document.querySelector(".name");
+
+  let crimeClass = document.querySelector(".crime")
+  let rewardClass = document.querySelector(".reward")
+
   let imageClass = document.querySelector(".detail-image");
-  nameClass.textContent = wanted.title;
+  let linkClass = document.querySelector(".url")
+  rewardClass.textContent = "Reward: " + wanted.reward_text;
+  if (wanted.reward_text === null ){
+    rewardClass.textContent = "No Reward at this time. Check back soon for updates"
+  }
+  linkClass.textContent = "Link to official FBI website: " + wanted.url
+  linkClass.addEventListener('click', function linkToFbi() {
+    window.location.href = wanted.url
+  })
+ 
+  crimeClass.textContent = "Crime(s): " + wanted.description
+  nameClass.textContent = "Name: " + wanted.title;
   imageClass.src = wanted.images[0].original;
 }
 
@@ -106,9 +148,32 @@ function handleClick(wanted) {
 //   let
 // }
 
+
+// write a function that removes the missing people from the list
+function handleClickTwo(wanted) {
+    let nameClassTwo = document.querySelector(".missing-name");
+    let detailsClass = document.querySelector(".details")
+    let rewardClass = document.querySelector(".missing-reward")
+    let imageClass = document.querySelector(".missing-detail-image");
+    let linkClass = document.querySelector(".missing-url")
+    rewardClass.textContent = wanted.reward_text;
+    if (wanted.reward_text === null ){
+      rewardClass.textContent = "No Reward at this time. Check back soon for updates"
+    }
+    linkClass.textContent = wanted.url
+    linkClass.addEventListener('click', function linkToFbi() {
+      window.location.href = wanted.url
+    })
+    
+    detailsClass.textContent = wanted.details
+    nameClassTwo.textContent = wanted.title;
+    imageClass.src = wanted.images[0].original;
+  }
+
 // let submitFormButton = document.querySelector("#submit-button");
 // // listen for the submit event on the form
 // submitFromButtom.addEventListener("submit", () => {
 //   event.preventDefault(); //
 //   alert("Faux Fugitive Added to Database ");
 // });
+
