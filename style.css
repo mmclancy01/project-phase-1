@@ -75,3 +75,11 @@ body {
   input[type="submit"]:hover {
     background-color: #555; /* Slightly darker gray on hover */
   }
+  #captured{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    text-align: center;
+    font-size: larger;
+  }

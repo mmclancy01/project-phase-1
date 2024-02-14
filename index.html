@@ -20,13 +20,14 @@
   
   
     <div id="fugitve-details">
-      <img class="detail-image" src="#" alt="FBI most wanted" />
+      <img class="detail-image" src="https://upload.wikimedia.org/wikipedia/commons/c/cc/FBI_Most_Wanted_Title_Text.png" alt="FBI most wanted" />
       <h2 class="name">Name:</h2>
       <h3 class="crime">Crime:</h3>
       <h4 class="reward">Reward:</h4>
-
       <h5 class="url">Link to FBI official website:</h5>
-
+      <div id="captured">
+        Hover here to see if captured  
+      </div>
 
     </div>
   
@@ -43,8 +44,11 @@
       <input type="text" name="image" id="new-image" />
       <label for="new-reward">Reward: </label>
       <input type="number" name="reward" id="new-reward" />
-      <label for="new-comment">Comment: </label>
-      <textarea name="new-comment" name="new-comment" id="new-comment"></textarea>
+      <label for="choices">Select a Choice: </label>
+        <select id="choices" name="choices">
+            <option value="option1">On The Run!</option>
+            <option value="option2">Captured!</option>
+        </select>
       <input type="submit" id='submit-button' value="Create" />
     </form>
 
@@ -58,6 +62,20 @@
       <h4 class="missing-reward">Reward:</h4>
       <h5 class="missing-url">Link to FBI official website:</h5>
     </div>
+    <form id="new-missing-person">
+      <h5>Someone not responding to your texts? Your boy only hanging with his new girlfriend instead of the boys? Report that person missing here!</h5>
+      <label for="new-name-missing">Name: </label>
+      <input type="text" name="new-name-missing" id="new-name-missing" />
+      <label for="last-seen">Last Seen: </label>
+      <input type="text" name="last-seen" id="last-seen" />
+      <label for="new-image-missing">Image: </label>
+      <input type="text" name="new-image-missing" id="new-image-missing" />
+      <label for="new-reward-missing">Reward: </label>
+      <input type="number" name="new-reward-missing" id="new-reward-missing" />
+      <label for="new-comment">Comment: </label>
+      <textarea name="new-comment-missing" name="new-comment-missing" id="new-comment-missing"></textarea>
+      <input type="submit" id='submit-button' value="Create" />
+    </form>
     <script defer src="index.js"></script>
 
   </body>
