@@ -33,30 +33,6 @@ function displayFugitives() {
           imgElement.addEventListener('click', () => {
             handleClickTwo(wanted)  
             })
-
-          // console.log(fugitiveName);
-          // console.log(fugitiveImage);
-          let imageContainer = document.querySelector("#real-fugitives");
-          let imgElement = document.createElement("img");
-          imgElement.src = fugitiveImage;
-          imageContainer.append(imgElement);
-          // fugitiveImage.splice()
-          imgElement.addEventListener("click", () => {
-            handleClick(wanted);
-          });
-        } else {
-          // console.log(fugitiveName);
-          // console.log(fugitiveImage);
-          let imageContainerTwo = document.querySelector("#real-missing");
-          let imgElement = document.createElement("img");
-          imgElement.src = fugitiveImage;
-          imageContainerTwo.append(imgElement);
-          // fugitiveImage.splice()
-
-          //   imgElement.addEventListener('click', () => {
-          //     handleClick(wanted)
-          //     })
-
         }
       }
     });
