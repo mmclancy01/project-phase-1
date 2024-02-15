@@ -1,4 +1,5 @@
 let imageClass = document.querySelector(".detail-image")
+let imageContainer = document.querySelector("#real-fugitives")
 
 const fetchUrl = "https://api.fbi.gov/wanted/v1/list";
 function displayFugitives() {
@@ -13,7 +14,7 @@ function displayFugitives() {
         
             console.log(fugitiveName)
             console.log(fugitiveImage)
-            let imageContainer = document.querySelector("#real-fugitives")
+            // let imageContainer = document.querySelector("#real-fugitives")
             let imgElement = document.createElement('img')
             imgElement.src = fugitiveImage
             imageContainer.append(imgElement)
@@ -49,7 +50,7 @@ function handleFormSubmission(event) {
   });
 
   console.log(jsonFormData);
-  let imageContainer = document.querySelector("#real-fugitives");
+//   let imageContainer = document.querySelector("#real-fugitives");
   
   let imgElementEtc = document.createElement("img");
   let newImage = jsonFormData["image"]
@@ -66,11 +67,10 @@ function handleFormSubmission(event) {
     h3.textContent = "Crime: " +jsonFormData["crime"]
     h4.textContent = "Reward: " + jsonFormData["reward"]
     let h6 = document.querySelector('#captured')
-    let choice = document.getElementById('choices').value;
+    let choice = jsonFormData["choices"]
     h6.addEventListener("mouseover", event => {
       event.preventDefault();
       
-  
         event.target.style.backgroundColor = "blue"
         event.target.style.color = "white"
         if (choice === "option1"){
@@ -171,9 +171,6 @@ function handleClickTwo(wanted) {
     let nameFormData = event.target["name"].value
     let lastSeenFormData = event.target["crime"].value
     let rewardFormData = event.target["reward"].value
-
-
-
     imgElementThree.src = newMissingImage;
     imageContainerThree.append(imgElementThree)
         imgElementThree.addEventListener('click',(event) => {
@@ -185,29 +182,3 @@ function handleClickTwo(wanted) {
 
         })
   })
-
-//   const handleMissingForm = (event) => {
-    // event.preventDefault()
-    // let newMissingName = document.querySelector(".new_name_missing")
-    // let lastSeen = document.querySelector(".last-seen")
-    // let newMissingImage = event.target["image"].value
-    // let newMissingReward = document.querySelector(".new-reward-missing")
-    // let imageContainerThree = document.querySelector("#real-missing")
-    // let imgElementThree = document.createElement("img");
-
-    // newMissingName.textContent = event.target["name"].value;
-    // lastSeen.textContent = event.target["last-seen"].value;
-    // newMissingReward.textContent = event.target["new-reward-missing"].value;
-    // imgElementThree.src = newMissingImage;
-    // imageContainerThree.append(imgElementThree)
-
-
-
-  
-// let submitFormButton = document.querySelector("#submit-button");
-// // listen for the submit event on the form
-// submitFromButtom.addEventListener("submit", () => {
-//   event.preventDefault(); //
-//   alert("Faux Fugitive Added to Database ");
-// });
-
