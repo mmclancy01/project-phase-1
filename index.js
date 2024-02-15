@@ -1,4 +1,6 @@
-let imageClass = document.querySelector(".detail-image");
+
+let imageClass = document.querySelector(".detail-image")
+let imageContainer = document.querySelector("#real-fugitives")
 
 const fetchUrl = "https://api.fbi.gov/wanted/v1/list";
 function displayFugitives() {
@@ -10,9 +12,24 @@ function displayFugitives() {
         let fugitiveName = wanted.title;
         let fugitiveImage = wanted.images[0].thumb;
         if (!wanted.subjects.includes("ViCAP Missing Persons")) {
+
+
+        
+            console.log(fugitiveName)
+            console.log(fugitiveImage)
+            // let imageContainer = document.querySelector("#real-fugitives")
+            let imgElement = document.createElement('img')
+            imgElement.src = fugitiveImage
+            imageContainer.append(imgElement)
+        
+            imgElement.addEventListener('click', () => {
+            handleClick(wanted)
+            
+            })
+
           console.log(fugitiveName);
           console.log(fugitiveImage);
-          let imageContainer = document.querySelector("#real-fugitives");
+          // let imageContainer = document.querySelector("#real-fugitives");
           let imgElement = document.createElement("img");
           imgElement.src = fugitiveImage;
           imageContainer.append(imgElement);
@@ -20,6 +37,7 @@ function displayFugitives() {
           imgElement.addEventListener("click", () => {
             handleClick(wanted);
           });
+
         } else {
           console.log(fugitiveName);
           console.log(fugitiveImage);
@@ -46,7 +64,12 @@ function handleFormSubmission(event) {
   });
 
   console.log(jsonFormData);
-  let imageContainer = document.querySelector("#real-fugitives");
+
+//   let imageContainer = document.querySelector("#real-fugitives");
+  
+
+//   let imageContainer = document.querySelector("#real-fugitives");
+
 
   let imgElementEtc = document.createElement("img");
   let newImage = jsonFormData["image"];
@@ -55,6 +78,29 @@ function handleFormSubmission(event) {
   let h5 = document.querySelector(".reward");
   imgElementEtc.src = newImage;
   imageContainer.append(imgElementEtc);
+
+
+  imgElementEtc.addEventListener('click', (event) => {
+    event.preventDefault(); 
+    imageClass.src = newImage
+    h2.textContent = "Name: " +jsonFormData["name"]
+    h3.textContent = "Crime: " +jsonFormData["crime"]
+    h4.textContent = "Reward: " + jsonFormData["reward"]
+    let h6 = document.querySelector('#captured')
+    let choice = jsonFormData["choices"]
+    h6.addEventListener("mouseover", event => {
+      event.preventDefault();
+      
+        event.target.style.backgroundColor = "blue"
+        event.target.style.color = "white"
+        if (choice === "option1"){
+          event.target.textContent = "On The Run!"
+        }
+        else if (choice === "option2") {
+          event.target.textContent = "Captured"
+        }
+     })
+     h6.addEventListener("mouseout", event => {
 
   imgElementEtc.addEventListener("click", (event) => {
     event.preventDefault();
@@ -77,6 +123,7 @@ function handleFormSubmission(event) {
       }
     });
     h6.addEventListener("mouseout", (event) => {
+
       event.preventDefault();
       event.target.style.backgroundColor = "red";
       event.target.style.color = "white";
@@ -144,6 +191,32 @@ function handleClickTwo(wanted) {
     rewardClass.textContent =
       "No Reward at this time. Check back soon for updates";
   }
+
+  let submitMissingForm = document.querySelector("#new_missing_person")
+  submitMissingForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    let newMissingImage = event.target["image"].value
+    let imageContainerThree = document.querySelector("#real-missing")
+    let imgElementThree = document.createElement("img");
+    let missingName = document.querySelector(".missing-name")
+    let missingDetails = document.querySelector(".details")
+    let missingReward = document.querySelector(".missing-reward")
+    let imageClassTen = document.querySelector(".missing-detail-image")
+    let nameFormData = event.target["name"].value
+    let lastSeenFormData = event.target["crime"].value
+    let rewardFormData = event.target["reward"].value
+    imgElementThree.src = newMissingImage;
+    imageContainerThree.append(imgElementThree)
+        imgElementThree.addEventListener('click',(event) => {
+            event.preventDefault()
+            missingName.textContent = "Name: " + nameFormData
+            missingDetails.textContent = "Last Seen: " + lastSeenFormData 
+            missingReward.textContent = "Reward: " + rewardFormData
+            imageClassTen.src = newMissingImage
+
+        })
+  })
+
   linkClass.textContent = wanted.url;
   linkClass.addEventListener("click", function linkToFbi() {
     window.location.href = wanted.url;
@@ -201,3 +274,4 @@ submitMissingForm.addEventListener("submit", (event) => {
 //   event.preventDefault(); //
 //   alert("Faux Fugitive Added to Database ");
 // });
+
