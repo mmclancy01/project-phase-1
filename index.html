@@ -23,10 +23,10 @@
   
     <div id="fugitve-details">
       <img class="detail-image" src="https://upload.wikimedia.org/wikipedia/commons/c/cc/FBI_Most_Wanted_Title_Text.png" alt="FBI most wanted" />
-      <h2 class="name">Name:</h2>
-      <h3 class="crime">Crime:</h3>
-      <h4 class="reward">Reward:</h4>
-      <h5 class="url">Link to FBI official website:</h5>
+      <h3 class="name">Name:</h3>
+      <h4 class="crime">Crime:</h4>
+      <h5 class="reward">Reward:</h5>
+      <h6 class="url">Link to FBI official website:</h6>
       <div id="captured">
         Hover here to see if captured  
       </div>
@@ -37,7 +37,7 @@
   
   
     <form id="new_fugitive">
-      <h5>Report a Fugitive who Inconvenienced You</h5>
+      <h7>Report a Fugitive who Inconvenienced You</h7>
       <label for="new-name">Name: </label>
       <input type="text" name="name" id="new-name" />
       <label for="new-crime">Crime: </label>
@@ -45,7 +45,7 @@
       <label for="new-image">Image: </label>
       <input type="text" name="image" id="new-image" />
       <label for="new-reward">Reward: </label>
-      <input type="number" name="reward" id="new-reward" />
+      <input type="number" name="reward" id="new-reward" data-type="currency"/>
       <label for="choices">Select a Choice: </label>
         <select id="choices" name="choices">
             <option value="option1">On The Run!</option>
@@ -59,14 +59,15 @@
     </div>
     <div id="missing-details">
       <img class="missing-detail-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdpZgXqTnDCNnFPatsg6mu-9vCxTK6-tKNRg&usqp=CAU" alt="FBI most wanted" />
-      <h2 class="missing-name">Name:</h2>
-      <h3 class="details">Last Seen:</h3>
-      <h4 class="missing-reward">Reward:</h4>
-      <h5 class="missing-url">Link to FBI official website:</h5>
+      <h3 class="missing-name">Name:</h3>
+      <h4 class="details">Last Seen:</h4>
+      <h5 class="missing-reward">Reward:</h5>
+      <h6 class="missing-url">Link to FBI official website:</h6>
     </div>
     
     <form id="new_missing_person">
-      <h7>Someone not responding to your texts? Your boy only hanging with his new girlfriend instead of the boys? Report that person missing here!</h7>
+      <h7>Missing Persons Form</h7>
+        <p>Someone not responding to your texts? Your friend only hanging with thier new fling? Report that person missing here!</p>
       <label for="new-name">Name: </label>
       <input type="text" name="name" id="new-name" />
       <label for="new-crime">Last Seen: </label>
