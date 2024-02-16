@@ -13,6 +13,7 @@ header {
   border-bottom: 1px solid #0056b3;
   color: #fff;
   font-size: 40px;
+  border-radius: 10px;
 }
 
 h1 {
@@ -57,12 +58,16 @@ p {
   flex-wrap: wrap;
 }
 
+#webpage-layout {
+  padding: 3vw
+}
+
 #container-wrapper {
   padding: 20px;
   margin: 20px;
 }
 
-#real-fugitives, #real-missing {
+#real-fugitives {
   border: 1px solid #ccc;
   min-height: 50vh;
   max-height: 100px;
@@ -71,10 +76,10 @@ p {
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: end;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  
+  margin-top: 20px
 }
 
 #real-fugitives img, #real-missing img {
@@ -88,7 +93,7 @@ p {
   object-fit: cover;
 }
 
-#fugitve-details {
+#fugitve-details, #missing-details {
   background-color: #007bff;
   padding: 20px;
   margin-top: 20px;
@@ -97,6 +102,7 @@ p {
   align-items: center;
   justify-content: center;
   color: #fff;
+  border-radius: 10px;
 }
 
 .detail-image, .missing-detail-image {
@@ -108,6 +114,7 @@ p {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   border: 2px solid #cae4ff;
+  margin-top: 20px
 }
 
 .name, .crime, .reward {
@@ -168,3 +175,21 @@ input[type="submit"]:hover {
   border-color: white;
 }
 
+#new_fugitive, #new_missing_person {
+  border-radius: 10px;
+}
+
+#real-missing {
+  border: 1px solid #ccc;
+  min-height: 25vh;
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}

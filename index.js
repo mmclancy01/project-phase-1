@@ -6,50 +6,74 @@ function displayFugitives() {
     .then((response) => response.json())
     .then((wanteds) => {
       // what this ^ really looks like is const wanteds = response.json()
-      for (let wanted of wanteds.items) {
-        let fugitiveName = wanted.title;
+      let missingPersons = wanteds.items.filter((wanted) =>
+        wanted.subjects.includes("ViCAP Missing Persons")
+      );
+
+      let fugitives = wanteds.items.filter(
+        (wanted) => !wanted.subjects.includes("ViCAP Missing Persons")
+      );
+
+      missingPersons.forEach((wanted) => {
         let fugitiveImage = wanted.images[0].thumb;
-        if (!wanted.subjects.includes("ViCAP Missing Persons")) {
-          console.log(fugitiveName);
-          console.log(fugitiveImage);
-          let imageContainer = document.querySelector("#real-fugitives");
-          let imgElement = document.createElement("img");
-          imgElement.src = fugitiveImage;
-          imageContainer.append(imgElement);
 
-          imgElement.addEventListener("click", () => {
-            handleClick(wanted);
-          });
-        } else {
-          console.log(fugitiveName);
-          console.log(fugitiveImage);
-          let imageContainerTwo = document.querySelector("#real-missing");
-          let imgElement = document.createElement("img");
-          imgElement.src = fugitiveImage;
-          imageContainerTwo.append(imgElement);
-          // fugitiveImage.splice()
+        let imageContainerTwo = document.querySelector("#real-missing");
+        let imgElement = document.createElement("img");
+        imgElement.src = fugitiveImage;
+        imageContainerTwo.append(imgElement);
 
-          imgElement.addEventListener("click", () => {
-            handleClickTwo(wanted);
-          });
-        }
-      }
+        imgElement.addEventListener("click", () => {
+          handleClickTwo(wanted);
+        });
+      });
+
+      fugitives.forEach((wanted) => {
+        let fugitiveImage = wanted.images[0].thumb;
+
+        let imageContainer = document.querySelector("#real-fugitives");
+        let imgElement = document.createElement("img");
+        imgElement.src = fugitiveImage;
+        imageContainer.append(imgElement);
+
+        imgElement.addEventListener("click", () => {
+          handleClick(wanted);
+        });
+      });
     });
 }
 
 function handleFormSubmission(event) {
   event.preventDefault(); // Prevent default form submission behavior
   let formData = new FormData(event.target);
-  let jsonFormData = {};
+  let newCrime = {};
   formData.forEach((value, key) => {
-    jsonFormData[key] = value;
+    newCrime[key] = value;
   });
 
-  console.log(jsonFormData);
+  fetch("https://api.fbi.gov/wanted/v1/list", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(newCrime),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  console.log(newCrime);
   let imageContainer = document.querySelector("#real-fugitives");
 
   let imgElementEtc = document.createElement("img");
-  let newImage = jsonFormData["image"];
+  let newImage = newCrime["image"];
   let h3 = document.querySelector(".name");
   let h4 = document.querySelector(".crime");
   let h5 = document.querySelector(".reward");
@@ -59,11 +83,11 @@ function handleFormSubmission(event) {
   imgElementEtc.addEventListener("click", (event) => {
     event.preventDefault();
     imageClass.src = newImage;
-    h3.textContent = "Name: " + jsonFormData["name"];
-    h4.textContent = "Crime: " + jsonFormData["crime"];
-    h5.textContent = "Reward: " + jsonFormData["reward"];
+    h3.textContent = "Name: " + newCrime["name"];
+    h4.textContent = "Crime: " + newCrime["crime"];
+    h5.textContent = "Reward: " + newCrime["reward"];
     let h6 = document.querySelector("#captured");
-    let choice = jsonFormData["choices"];
+    let choice = newCrime["choices"];
     h6.addEventListener("mouseover", (event) => {
       event.preventDefault();
 
