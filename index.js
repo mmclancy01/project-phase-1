@@ -50,25 +50,6 @@ function handleFormSubmission(event) {
     newCrime[key] = value;
   });
 
-  fetch("https://api.fbi.gov/wanted/v1/list", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(newCrime),
-  })
-    .then((response) => {
-      if (response.status === 201) {
-        return response.json();
-      }
-    })
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-
   console.log(newCrime);
   let imageContainer = document.querySelector("#real-fugitives");
 
